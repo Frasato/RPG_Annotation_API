@@ -10,7 +10,9 @@ public class PostModel {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String postId;
 
+    @Column(nullable = false, length = 25)
     private String title;
+    @Column(nullable = false, length = 250)
     private String content;
     private Integer like;
 
