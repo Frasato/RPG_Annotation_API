@@ -14,6 +14,7 @@ public class PostModel {
     private String content;
     private Integer like;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "creator_user_id")
     private UserModel userId;
 }
