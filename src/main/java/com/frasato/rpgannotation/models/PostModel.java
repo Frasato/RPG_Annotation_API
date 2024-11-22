@@ -18,17 +18,17 @@ public class PostModel {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "creator_user_id")
-    private UserModel userId;
+    private UserModel user;
 
     public PostModel() {
     }
 
-    public PostModel(String postId, String title, String content, Integer like, UserModel userId) {
+    public PostModel(String postId, String title, String content, Integer like, UserModel user) {
         this.postId = postId;
         this.title = title;
         this.content = content;
         this.like = like;
-        this.userId = userId;
+        this.user = user;
     }
 
     public String getPostId() {
@@ -63,11 +63,11 @@ public class PostModel {
         this.like = like;
     }
 
-    public UserModel getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(UserModel userId) {
-        this.userId = userId;
+    public void setUser(UserModel userId) {
+        this.user = userId;
     }
 }
