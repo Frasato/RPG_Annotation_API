@@ -2,6 +2,8 @@ package com.frasato.rpgannotation.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class UserModel {
@@ -15,6 +17,8 @@ public class UserModel {
     private String email;
     @Column(nullable = false)
     private String password;
+    @OneToMany(mappedBy = "userId")
+    private List<PostModel> postModel;
 
     public UserModel() {
     }
@@ -56,5 +60,13 @@ public class UserModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<PostModel> getPostModel() {
+        return postModel;
+    }
+
+    public void setPostModel(List<PostModel> postModel) {
+        this.postModel = postModel;
     }
 }
