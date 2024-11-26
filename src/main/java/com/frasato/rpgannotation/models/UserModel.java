@@ -19,16 +19,20 @@ public class UserModel {
     @Column(nullable = false)
     private String password;
     @OneToMany(mappedBy = "user")
-    private List<PostModel> postModel = new ArrayList<>();
+    private List<PostModel> posts = new ArrayList<>();
+    @ManyToMany(mappedBy = "user")
+    private List<LikeModel> like = new ArrayList<>();
 
     public UserModel() {
     }
 
-    public UserModel(String userId, String username, String email, String password) {
+    public UserModel(String userId, String username, String email, String password, List<PostModel> posts, List<LikeModel> like) {
         this.userId = userId;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.posts = posts;
+        this.like = like;
     }
 
     public String getUserId() {
@@ -63,11 +67,19 @@ public class UserModel {
         this.password = password;
     }
 
-    public List<PostModel> getPostModel() {
-        return postModel;
+    public List<PostModel> getPosts() {
+        return posts;
     }
 
-    public void setPostModel(List<PostModel> postModel) {
-        this.postModel = postModel;
+    public void setPosts(List<PostModel> posts) {
+        this.posts = posts;
+    }
+
+    public List<LikeModel> getLike() {
+        return like;
+    }
+
+    public void setLike(List<LikeModel> like) {
+        this.like = like;
     }
 }
