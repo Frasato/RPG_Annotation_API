@@ -2,6 +2,9 @@ package com.frasato.rpgannotation.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "posts")
 public class PostModel {
@@ -14,7 +17,9 @@ public class PostModel {
     private String title;
     @Column(nullable = false, length = 250)
     private String content;
-    private Integer like;
+
+    @ManyToMany(mappedBy = "post")
+    private List<LikeModel> like = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "creator_user_id")
@@ -23,7 +28,7 @@ public class PostModel {
     public PostModel() {
     }
 
-    public PostModel(String postId, String title, String content, Integer like, UserModel user) {
+    public PostModel(String postId, String title, String content, List<LikeModel> like, UserModel user) {
         this.postId = postId;
         this.title = title;
         this.content = content;
@@ -55,11 +60,11 @@ public class PostModel {
         this.content = content;
     }
 
-    public Integer getLike() {
+    public List<LikeModel> getLike() {
         return like;
     }
 
-    public void setLike(Integer like) {
+    public void setLike(List<LikeModel> like) {
         this.like = like;
     }
 
