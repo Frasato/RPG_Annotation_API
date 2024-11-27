@@ -7,7 +7,6 @@ import com.frasato.rpgannotation.models.UserModel;
 import com.frasato.rpgannotation.repositories.UserRepository;
 import com.frasato.rpgannotation.services.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.config.RepositoryNameSpaceHandler;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
