@@ -6,6 +6,7 @@ import com.frasato.rpgannotation.repositories.PostRepository;
 import com.frasato.rpgannotation.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -30,6 +31,17 @@ public class PostService {
         postModel.setContent(content);
 
         postRepository.save(postModel);
+
+    }
+
+    public List<PostModel> postsByUser(@RequestBody String userId){
+        List<PostModel> posts = postRepository.findPostsByUser(userId);
+
+        if(!posts.isEmpty()){
+            return posts;
+        }
+
+        return null;
 
     }
 
